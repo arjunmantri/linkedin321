@@ -95,24 +95,37 @@
                     <% } %>
                 <% } %>
                 <!-- LOGIN FORM -->
-                <form action="/signup/user" method="post">
+                <form action="/signup/user" method="post" name="myform" novalidate>
 
 
-                    <div class="form-group">
-                        <input type="text" class="form-control" name="firstname" ng-model="newUser.firstname" placeholder="Firstname">
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" name="lastname" ng-model="newUser.lastname" placeholder="Lastname">
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" name="email" ng-model="newUser.email" placeholder="Email">
-                    </div>
-                    <div class="form-group">
+                <div class="form-group">
+                    <input type="text" class="form-control" name="firstname" ng-model="newUser.firstname" placeholder="Firstname" required>
+                      <span style="color:red" ng-show="myform.firstname.$dirty && myform.firstname.$invalid">
+                        <span ng-show="myform.firstname.$error.required">*</span>
+                      </span>
+                </div>
+                <div class="form-group">
+                        <input type="text" class="form-control" name="lastname" ng-model="newUser.lastname" placeholder="Lastname" required>
+                        <span style="color:red" ng-show="myform.lastname.$dirty && myform.lastname.$invalid">
+                            <span ng-show="myform.lastname.$error.required">*</span>
+                        </span>
+                </div>
+                <div class="form-group">
+                        <input type="email" class="form-control" name="email" ng-model="newUser.email" placeholder="Email" required>
+                        <span style="color:red" ng-show="myform.email.$dirty && myform.email.$invalid">
+                        <span ng-show="myform.email.$error.required">Email is required.</span>
+                        <span ng-show="myform.email.$error.email">Invalid email address.</span>
+                        </span>
+                </div>
+                <div class="form-group">
 
-                        <input type="password" class="form-control" name="password" ng-model="newUser.password" placeholder="Password">
-                    </div>
+                        <input type="password" class="form-control" name="password" ng-model="newUser.password" placeholder="Password" required>
+                        <span style="color:red" ng-show="myform.password.$dirty && myform.password.$invalid">
+                        <span ng-show="myform.password.$error.required">Password is required.</span>
+                        </span>
+                </div>
 
-                    <button type="submit" class="btn btn-warning btn-xs btn-block">Signup</button>
+                    <button type="submit" class="btn btn-warning btn-xs btn-block" ng-disabled="myform.firstname.$dirty && myform.firstname.$invalid || myform.firstname.$error.required || myform.lastname.$dirty &&myform.lastname.$invalid || myform.lastname.$error.required || myform.email.$dirty && myform.email.$invalid && myform.email.$error.required || myform.password.$dirty && myform.password.$invalid">Signup</button>
                 </form>
 
                 <hr>
@@ -136,17 +149,24 @@
 
 
                     <!-- LOGIN FORM -->
-                    <form method="post" action="/login/user">
+                    <form method="post" action="/login/user" name = "myform" novalidate>
 
                         <div class="form-group">
-                            <input type="text" class="form-control" name="email" ng-model="existingUser.email" placeholder="Email">
+                            <input type="email" class="form-control" name="email" ng-model="existingUser.email" placeholder="Email" required>
+                            <span style="color:red" ng-show="myform.email.$dirty && myform.email.$invalid">
+                             <span ng-show="myform.email.$error.required">Email is required.</span>
+                             <span ng-show="myform.email.$error.email">Invalid email address.</span>
+                            </span>
                         </div>
                         <div class="form-group">
 
-                            <input type="password" class="form-control" name="password" ng-model="existingUser.password" placeholder="Password">
+                            <input type="password" class="form-control" name="password" ng-model="existingUser.password" placeholder="Password" required>
+                            <span style="color:red" ng-show="myform.password.$dirty && myform.password.$invalid">
+                            <span ng-show="myform.password.$error.required">Password is required.</span>
+                            </span>
                         </div>
 
-                        <p><button type="submit" class="btn btn-info btn-xs btn-block">Login</button></p>
+                        <p><button type="submit" class="btn btn-info btn-xs btn-block" ng-disabled="myform.email.$dirty && myform.email.$invalid && myform.email.$error.required" && myform.password.$error.required || myform.password.$dirty>Login</button></p>
                     </form>
 
                     <hr>
@@ -166,22 +186,32 @@
                     <% } %>
 
                     <!-- LOGIN FORM -->
-                    <form action="/signup/company" method="post">
+                    <form action="/signup/company" method="post" name="myform" novalidate>
 
 
                         <div class="form-group">
-                            <input type="text" class="form-control" ng-model="newCompany.company" name="companyname" placeholder="company name">
+                            <input type="text" class="form-control" ng-model="newCompany.company" name="companyname" placeholder="company name" required>
+                            <span style="color:red" ng-show="myform.companyname.$dirty && myform.companyname.$invalid">
+                            <span ng-show="myform.companyname.$error.required">*</span>
+                            </span>
                         </div>
                         <div class="form-group">
                             
-                            <input type="text" class="form-control" ng-model="newCompany.email" name="email" placeholder="email">
+                            <input type="email" class="form-control" ng-model="newCompany.email" name="email" placeholder="email" required>
+                            <span style="color:red" ng-show="myform.email.$dirty && myform.email.$invalid">
+                            <span ng-show="myform.email.$error.required">Email is required.</span>
+                            <span ng-show="myform.email.$error.email">Invalid email address.</span>
+                            </span>
                         </div>
                         <div class="form-group">
 
-                            <input type="password" class="form-control" ng-model="newCompany.password" name="password" placeholder="password">
+                            <input type="password" class="form-control" ng-model="newCompany.password" name="password" placeholder="password" required>
+                            <span style="color:red" ng-show="myform.password.$dirty && myform.password.$invalid">
+                            <span ng-show="myform.password.$error.required">Password is required.</span>
+                            </span>
                         </div>
 
-                        <button type="submit" class="btn btn-warning btn-xs btn-block">Signup</button>
+                        <button type="submit" class="btn btn-warning btn-xs btn-block" ng-disabled="myform.companyname.$dirty && myform.companyname.$invalid || myform.companyname.$error.required || myform.email.$dirty && myform.email.$invalid && myform.email.$error.required || myform.password.$dirty && myform.password.$invalid">Signup</button>
                     </form>
 
                     <hr>
@@ -203,17 +233,24 @@
 
 
                     <!-- LOGIN FORM -->
-                    <form method="post" action="/login/company">
+                    <form method="post" action="/login/company" name="myform" novalidate>
 
                         <div class="form-group">
 
-                            <input type="text" class="form-control" name="email" ng-model="existingCompany.email" placeholder="Email">
+                            <input type="email" class="form-control" name="email" ng-model="existingCompany.email" placeholder="Email" required>
+                            <span style="color:red" ng-show="myform.email.$dirty && myform.email.$invalid">
+                            <span ng-show="myform.email.$error.required">Email is required.</span>
+                            <span ng-show="myform.email.$error.email">Invalid email address.</span>
+                            </span>
                         </div>
                         <div class="form-group">
-                            <input type="password" class="form-control" name="password" ng-model="existingCompany.password" placeholder="Password">
+                            <input type="password" class="form-control" name="password" ng-model="existingCompany.password" placeholder="Password" required>
+                            <span style="color:red" ng-show="myform.password.$dirty && myform.password.$invalid">
+                            <span ng-show="myform.password.$error.required">Password is required.</span>
+                            </span>
                         </div>
 
-                        <p><button type="submit" class="btn btn-info btn-xs btn-block">Login</button>
+                        <p><button type="submit" class="btn btn-info btn-xs btn-block" ng-disabled="myform.email.$dirty && myform.email.$invalid && myform.email.$error.required" && myform.password.$error.required || myform.password.$dirty>Login</button>
 </p>
                     </form>
 

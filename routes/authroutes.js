@@ -68,14 +68,10 @@ router.get('/login/user', function(req, res){
 
 router.get('/logout', function(req, res){
     
-        
-        console.log("LOGGGGGGGGGGING OUT");
-         req.logout();
+      console.log("Logging out! " + req.user);
+        req.logout();
         req.flash('message', 'Logged out');
-
         req.session.destroy(function(err){
-         
-         console.log("SEssion erased");
           res.redirect('/');    
     });
       
@@ -158,7 +154,7 @@ router.get('/companyprofile', isLoggedIn, function(req, res){
 
 router.get('/editCompanyProfile', isLoggedIn, function(req, res){
     
-    res.render('companyeditprofile.ejs');
+    res.render('companyeditprofile.ejs', {'message' : req.user});
 });
 
 

@@ -28,6 +28,17 @@ exports.postCompany = function(req,res){
     
 };
 
+
+exports.updateCompanyInfo = function(req, res){
+
+	CompanyProfile.findOne({'_id' : req.user.companyId}, function(err, response){
+
+		if(err)
+			res.redirect('/companyeditprofile');
+	});
+}
+
+
 /*var config = require('../models/auth');
 var ejs = require("ejs");
 var ddb = require('dynamodb').ddb({ accessKeyId:config.ACCESS_KEY,secretAccessKey: config.ACCESS_SECRET, endpoint:config.ENDPOINT});
