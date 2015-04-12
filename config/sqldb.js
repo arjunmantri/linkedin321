@@ -3,7 +3,7 @@ var mysqlcon;
 
 var connection = mysql.createConnection(
         {
-            "host":"demoapp.cnfiarybvhfe.us-west-1.rds.amazonaws.com:3306",
+            "host":"demoapp.cnfiarybvhfe.us-west-1.rds.amazonaws.com",
              "database":"sampledb",
               "port":3306,
                 "username":"root",
