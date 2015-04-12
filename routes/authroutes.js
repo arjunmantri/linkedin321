@@ -70,17 +70,19 @@ router.get('/logout', function(req, res){
     
         
         console.log("LOGGGGGGGGGGING OUT");
+         req.logout();
         req.flash('message', 'Logged out');
 
         req.session.destroy(function(err){
-          req.logout();
+         
+         console.log("SEssion erased");
           res.redirect('/');    
     });
       
 });
 
 
-router.get('/profile/user', function(req, res){
+router.get('/profile/user', isLoggedIn, function(req, res){
     
     res.render('ProfileManager', { user : 1});
 });
@@ -149,12 +151,12 @@ router.post('/userProfile',user.postProfile);
 /*company dashboard routes*/
 
 //Company profile information and job posting details of the company
-router.get('/companyprofile', function(req, res){
+router.get('/companyprofile', isLoggedIn, function(req, res){
     
     res.render('company.ejs');
 });
 
-router.get('/editCompanyProfile', function(req, res){
+router.get('/editCompanyProfile', isLoggedIn, function(req, res){
     
     res.render('companyeditprofile.ejs');
 });
