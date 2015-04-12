@@ -3,11 +3,14 @@ var mysqlcon;
 
 var connection = mysql.createConnection(
         {
-            host : 'localhost',
-            user : 'root',
-            password: 'root',
-            database : 'Users'
-
+            "host":"demoapp.cnfiarybvhfe.us-west-1.rds.amazonaws.com:3306",
+             "database":"sampledb",
+              "port":3306,
+                "username":"root",
+              "password":"rootroot",
+               "reconnect":true,
+                "data_source_provider":"rds",
+                 "type":"mysql"
         });
 
 
