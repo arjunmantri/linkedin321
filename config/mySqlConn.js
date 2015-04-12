@@ -14,11 +14,11 @@ var mysql_pool = require('mysql');
 /* LOCAL MYSQL CONNECTION*/
 var pool  = mysql_pool.createPool({
 
-	host     : 'localhost'
+	host     : 'localhost',
 	user     : 'root',
 	password : 'root',
 	port     : '3306',
-	database : 'sampledb',
+	database : 'users',
 	connectionLimit : '10'
 });
 

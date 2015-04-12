@@ -6,7 +6,7 @@ var company = new Schema({
 	_id:String,
 	UserId:Number,
 	CompanyName:String,
-	Adress:String,
+	Address:String,
 	Country:String,
 	Zip:String,
 	Overview:String,

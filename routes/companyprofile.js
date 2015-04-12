@@ -1,40 +1,52 @@
 CompanyProfile = require('../models/CompanyModel');
 
-exports.postCompany = function(req,res){
-	
-	
-	cm = new CompanyProfile;
-	var date = Date.now();
-	var h = date.toString();
-	console.log(h);
-	cm._id = h;
-	cm.UserId = 1;
-	cm.CompanyName = req.body.CompanyName;
-	cm.Adress = req.body.Adress;
-	cm.Country = req.body.Country;
-	cm.Zip = req.body.Zip;
-	cm.Overview = req.body.Overview;
-	cm.Url = req.body.Url;
-	cm.Founded = req.body.Founded;
 
-	cm.save(function(err){
+exports.getCompanyProfile = function(req, res){
+
+	var query = {'_id' : req.user.companyId};
+
+	CompanyProfile.findOne(query, function(err, response){
+
 		if(err)
-			throw err;
-		console.log("company profile added : " + cm);
-        
-        res.json({'save': 'Success'});
-	});		
-	//res.end("Company profile added");
-    
-};
-
+		{
+			console.log("Error response :" + err);
+			res.json('error');
+		}
+		else
+		{
+			console.log("CompanyProfile GET response " + response);
+			res.json({'CompanyInfo' : response});
+		}
+	});
+}
 
 exports.updateCompanyInfo = function(req, res){
 
-	CompanyProfile.findOne({'_id' : req.user.companyId}, function(err, response){
+	var query = {'_id' : req.user.companyId};
 
-		if(err)
-			res.redirect('/companyeditprofile');
+	CompanyProfile.findOne(query, function(err, response){
+
+	if(err)
+	{
+		console.log("Error response :" + err);
+		res.json('error');
+	}
+	else
+	{
+		console.log("Response : " + response);
+		var update = { CompanyName : req.body.CompanyName, Address: req.body.Address, Country: req.body.Country, Zip: req.body.ZipCode, Overview: req.body.Overview, Url: req.body.Url, Founded: req.body.Founded };
+
+			CompanyProfile.findOneAndUpdate(query, update, function(err, updateResponse){
+
+				if(err)
+					console.log("Error response :" + err);
+					res.json("err");
+
+				console.log("Company Update Response : " + updateResponse);
+				res.json('success');
+			});
+		}
+
 	});
 }
 

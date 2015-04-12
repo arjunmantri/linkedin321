@@ -1,7 +1,7 @@
 //var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 //var connection = require('../config/sqldb.js');
-var connection = require('../config/mysqlQuery');
+var connection = require('../config/mySqlQuery');
 var bcrypt   = require('bcrypt-nodejs');
 
 var CompanyProfile = require('../models/CompanyModel');

@@ -147,10 +147,7 @@ router.post('/userProfile',user.postProfile);
 /*company dashboard routes*/
 
 //Company profile information and job posting details of the company
-router.get('/companyprofile', isLoggedIn, function(req, res){
-    
-    res.render('company.ejs');
-});
+router.get('/companyprofile', isLoggedIn, company.getCompanyProfile);
 
 router.get('/editCompanyProfile', isLoggedIn, function(req, res){
     
@@ -158,8 +155,7 @@ router.get('/editCompanyProfile', isLoggedIn, function(req, res){
 });
 
 
-router.post('/companyProfile',company.postCompany);
-
+router.post('/companyprofile', company.updateCompanyInfo);
 
 
 

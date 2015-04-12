@@ -5,7 +5,7 @@
  */
 function execQuery (sql, params, callback) {
 	
-    var connPool = require('./mysqlConn').pool;
+    var connPool = require('./mySqlConn').pool;
     
 	connPool.getConnection(function (err, connection) {
 		if (err) {

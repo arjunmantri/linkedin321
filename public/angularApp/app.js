@@ -28,8 +28,8 @@ app.config(function ($routeProvider) {
             })
          .when('/companyViewProfile',
         		 {
-        	 	controller: 'CompanyController',
-        	 	templateUrl: '/views/companyViewProfile.ejs'
+        	 	   controller: 'CompanyController',
+        	 	   templateUrl: '/views/companyViewProfile.ejs'
         		 })
         .otherwise({ redirectTo: '/home' });
 });
