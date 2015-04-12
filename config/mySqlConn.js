@@ -1,18 +1,18 @@
 var mysql_pool = require('mysql');
 
 /* MYSQL RDS */
-/*var pool  = mysql_pool.createPool({
-	host     : 'demoapp.cnfiarybvhfe.us-west-1.rds.amazonaws.com',
+var pool  = mysql_pool.createPool({
+	host     : 'sampledb.cy0fkl5xnx4r.us-west-1.rds.amazonaws.com',
 	user     : 'root',
 	password : 'rootroot',
 	port     : '3306',
 	database : 'sampledb',
 	connectionLimit : '10'
 });
-*/
+
 
 /* LOCAL MYSQL CONNECTION*/
-var pool  = mysql_pool.createPool({
+/*var pool  = mysql_pool.createPool({
 
 	host     : 'localhost',
 	user     : 'root',
@@ -21,5 +21,5 @@ var pool  = mysql_pool.createPool({
 	database : 'users',
 	connectionLimit : '10'
 });
-
+*/
 exports.pool = pool;
