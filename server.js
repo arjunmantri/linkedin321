@@ -32,10 +32,10 @@ var authroutes = require('./routes/authroutes');
 require('./config/passportAuth').passportAuth(passport);
 require('./config/passportAuthCompany').passportAuthCompany(passport);
 
-//app.set('port', process.env.PORT || 8082);
+app.set('port', process.env.PORT || 80);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-app.set('port', process.env.PORT || 80);
+//app.set('port', process.env.PORT || 80);
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use(logger('dev'));
