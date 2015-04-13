@@ -35,7 +35,7 @@ require('./config/passportAuthCompany').passportAuthCompany(passport);
 //app.set('port', process.env.PORT || 8082);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-
+app.set('port', process.env.PORT || 80);
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use(logger('dev'));
@@ -124,5 +124,8 @@ app.use(function(err, req, res, next) {
   });
 });
 
+http.createServer(app).listen(app.get('port'), function(){
+  console.log('Express server listening on port ' + app.get('port'));
+});
 
 module.exports = app;
