@@ -32,7 +32,7 @@ var authroutes = require('./routes/authroutes');
 require('./config/passportAuth').passportAuth(passport);
 require('./config/passportAuthCompany').passportAuthCompany(passport);
 
-//app.set('port', process.env.PORT || 80);
+app.set('port', process.env.PORT || 80);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 //app.set('port', process.env.PORT || 80);
