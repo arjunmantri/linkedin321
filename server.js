@@ -32,7 +32,7 @@ var authroutes = require('./routes/authroutes');
 require('./config/passportAuth').passportAuth(passport);
 require('./config/passportAuthCompany').passportAuthCompany(passport);
 
-app.set('port', process.env.PORT || 80);
+//app.set('port', process.env.PORT || 80);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 //app.set('port', process.env.PORT || 80);
@@ -122,10 +122,6 @@ app.use(function(err, req, res, next) {
     message: err.message,
     error: {}
   });
-});
-
-http.createServer(app).listen(app.get('port'), function(){
-  console.log('Express server listening on port ' + app.get('port'));
 });
 
 module.exports = app;
