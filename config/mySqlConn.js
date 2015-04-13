@@ -2,7 +2,7 @@ var mysql_pool = require('mysql');
 
 /* MYSQL RDS */
 var pool  = mysql_pool.createPool({
-	host     : 'sampledb.cy0fkl5xnx4r.us-west-1.rds.amazonaws.com',
+	host     : 'demoapp.cnfiarybvhfe.us-west-1.rds.amazonaws.com',
 	user     : 'root',
 	password : 'rootroot',
 	port     : '3306',
